@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+
+  envoyserver:
+    image: steeltoeoss/eureka-server
+    networks:
+      - mynetwork
+    ports:
+      - 8761:8761
+
+  eurekadiscoverexample:
+    image: eurekahelloworld/eurekadiscoverexample:1.0
+    build:
+      context: .
+      dockerfile: EurekaDiscoverExample/Dockerfile
+    networks:
+      - mynetwork
+    ports:
+      - 5001:80
+
+  eurekaregisterexample:
+    image: eurekahelloworld/eurekaregisterexample:1.0
+    build:
+      context: .
+      dockerfile: EurekaRegisterExample/Dockerfile
+    networks:
+      - mynetwork
+
+ 
+networks:
+  mynetwork: 
+    driver: bridge
