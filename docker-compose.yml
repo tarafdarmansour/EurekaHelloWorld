@@ -17,7 +17,9 @@ services:
     networks:
       - mynetwork
     ports:
-      - 5001:80
+      - 5101:80
+    depends_on:
+      - envoyserver
 
   eurekaregisterexample:
     image: eurekahelloworld/eurekaregisterexample:1.0
@@ -26,6 +28,8 @@ services:
       dockerfile: EurekaRegisterExample/Dockerfile
     networks:
       - mynetwork
+    depends_on:
+      - envoyserver
 
  
 networks:

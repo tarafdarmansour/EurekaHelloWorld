@@ -31,7 +31,7 @@ namespace EurekaDiscoverExample.Controllers
             try
             {
                 var client = new HttpClient(_handler, false);
-                using (var resp = await client.GetAsync("http://MyEureka_Register_Example_1/WeatherForecast"))
+                using (var resp = await client.GetAsync("http://EurekaRegisterExample/WeatherForecast"))
                 {
                     if (resp.IsSuccessStatusCode)
                     {
